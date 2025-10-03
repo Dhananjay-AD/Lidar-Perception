@@ -27,12 +27,13 @@ class LidarPerception(Node):
         t1 = time.time()
         points = point_cloud2.read_points(msg, field_names=("x","y","z","intensity","return_type","channel","azimuth","elevation","distance","time_stamp"), skip_nans = True)
         t2 = time.time()
-        for p in points:
-            x = p[0]
-            y = p[1]
-            z = p[2]
-            if np.sqrt(x*x + y*y + z*z) < 20:
-                list.append(p)
+        
+        points = list(map(list,points))
+        points = np.array(points)
+        self.get_logger().info(f"shape of points array is {points.shape}")
+        Distance = np.sqrt(points[:,0]**2 + points[:,1]**2 + points[:,2]**2)
+        points = points[Distance < 20]
+        points = list(map(list,points))
 
         
         t3 = time.time()
