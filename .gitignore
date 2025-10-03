@@ -1,0 +1,97 @@
+# ====================
+# General Git ignores
+# ====================
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and IDEs
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+env/
+venv/
+pip-log.txt
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compiled object files
+*.o
+*.so
+*.a
+*.out
+
+# Build and devel folders
+build/
+devel/
+install/  # ROS2 install space
+
+# Catkin tools & ROS
+catkin_ws/build/
+catkin_ws/devel/
+catkin_tools_prebuild/
+.catkin_workspace
+.catkin_tools/
+rosdep-install-log.txt
+logs/
+msg_gen/
+srv_gen/
+action_gen/
+*.launch.pyc
+
+# Colcon (ROS2)
+log/
+colcon_build/
+.colcon/
+install/
+build/
+test_results/
+
+# ROS bag files
+*.bag
+*.db3  # ROS2 bag files
+
+# Other ROS generated files
+*.pyc
+*.pcd
+*.stl
+*.dae
+
+# Gazebo & RViz
+*.world
+*.model
+*.launch
+*.rviz
+*.gazebo
+
+# ROS2 FastDDS logs
+.fastrtps_profile.xml
+fastrtps_logs/
+
+# Other
+*.orig
+*.rej
+*.old
+*.backup
