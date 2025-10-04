@@ -16,6 +16,7 @@ class LidarPerception(Node):
         qos.reliability = ReliabilityPolicy.BEST_EFFORT
         self.pub = self.create_publisher(PointCloud2,'/processed_points',qos)
         self.sub = self.create_subscription(PointCloud2,'/pandar_points',self.callback,qos)
+        self.timer = self.create_timer(0.5,self.timer_callback)
 
 
 
@@ -24,10 +25,17 @@ class LidarPerception(Node):
         self.increment += 1
         self.total_points = msg.height*msg.width
         self.get_logger().info(f"No. of points are {self.total_points}")
+        
+
+    def timer_callback(self):
+        if self.latest_msg == None:
+            self.get_logger().info("Waiting for pcl msg")
+            return
+        msg = self.latest_msg
         t1 = time.time()
         points = point_cloud2.read_points(msg, field_names=("x","y","z","intensity","return_type","channel","azimuth","elevation","distance","time_stamp"), skip_nans = True)
         t2 = time.time()
-        
+
         points = list(map(list,points))
         points = np.array(points)
         self.get_logger().info(f"shape of points array is {points.shape}")
@@ -45,8 +53,6 @@ class LidarPerception(Node):
         time to filter pcl data is {t3-t2} 
         time to make new pcl msg from filtered data is {t4-t3} 
         time to publish is {t5-t4}""")
-
-
     
 def main(args = None):
     rclpy.init(args = args)
