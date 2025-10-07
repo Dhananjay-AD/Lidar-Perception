@@ -5,6 +5,7 @@ from sensor_msgs.msg import PointCloud2
 from sensor_msgs_py import point_cloud2
 import numpy as np
 import time
+import ros2_numpy as rnp
 
 class LidarPerception(Node):
     def __init__(self):
@@ -33,11 +34,8 @@ class LidarPerception(Node):
             return
         msg = self.latest_msg
         t1 = time.time()
-        points = point_cloud2.read_points(msg, field_names=("x","y","z","intensity","return_type","channel","azimuth","elevation","distance","time_stamp"), skip_nans = True)
+        points = ros_numpy.point_cloud2.pointcloud2_to_array(msg)
         t2 = time.time()
-
-        points = list(map(list,points))
-        points = np.array(points)
         self.get_logger().info(f"shape of points array is {points.shape}")
         Distance = np.sqrt(points[:,0]**2 + points[:,1]**2 + points[:,2]**2)
         points = points[Distance < 20]

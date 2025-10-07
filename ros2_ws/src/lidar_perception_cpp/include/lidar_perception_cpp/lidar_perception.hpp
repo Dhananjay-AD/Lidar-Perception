@@ -1,0 +1,23 @@
+#ifndef LIDAR_PERCEPTION_HPP_
+#define LIDAR_PERCEPTION_HPP_
+
+#include "rclcpp/rclcpp.hpp"
+#include "sensor_msgs/msg/point_cloud2.hpp"
+#include <memory>
+#include "rclcpp/qos.hpp"
+
+
+class LidarPerceptionCpp : public rclcpp::Node
+{
+    public:
+        LidarPerceptionCpp(); //constructor
+        rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub;
+        rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr sub;  
+
+    private:
+        void topic_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg);
+
+};
+
+
+#endif // LIDAR_PERCEPTION_HPP_
