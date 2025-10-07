@@ -5,6 +5,10 @@
 #include "sensor_msgs/msg/point_cloud2.hpp"
 #include <memory>
 #include "rclcpp/qos.hpp"
+#include "pcl_conversions/pcl_conversions.h"
+#include "pcl/point_cloud.h"
+#include "pcl/point_types.h"
+#include <cmath>
 
 
 class LidarPerceptionCpp : public rclcpp::Node

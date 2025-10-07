@@ -10,9 +10,15 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(PCL REQUIRED)
+find_package(pcl_conversions REQUIRED)
 
 include_directories(
-  include)
+  include
+  ${PCL_INCLUDE_DIRS}
+  ${pcl_conversions_INCLUDE_DIRS}
+)
+
 
 # External libraries
 
@@ -20,6 +26,11 @@ include_directories(
 # Adding executable
 add_executable(lidar_perception_node src/lidar_perception.cpp)
 
+
+target_link_libraries(lidar_perception_node
+  ${PCL_LIBRARIES}
+  ${pcl_conversions_LIBRARIES} 
+)
 
 
 ament_target_dependencies(lidar_perception_node rclcpp sensor_msgs tf2_ros)
