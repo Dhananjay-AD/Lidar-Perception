@@ -20,6 +20,8 @@ class LidarPerceptionCpp : public rclcpp::Node
 
     private:
         void topic_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg);
+        //output message from callback/published message
+        sensor_msgs::msg::PointCloud2::SharedPtr output_msg;
 
 };
 

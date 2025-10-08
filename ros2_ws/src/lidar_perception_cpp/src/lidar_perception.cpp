@@ -30,14 +30,11 @@ void LidarPerceptionCpp::topic_callback(const sensor_msgs::msg::PointCloud2::Sha
     cloud_filtered->width = cloud_filtered->points.size();
         cloud_filtered->height = 1;  // unorganized cloud
         cloud_filtered->is_dense = true;
-        // Create ROS2 message
-        sensor_msgs::msg::PointCloud2 output_msg;
-
         // Convert PCL cloud to ROS2 PointCloud2
-        pcl::toROSMsg(*cloud_filtered, output_msg);
+        pcl::toROSMsg(*cloud_filtered, output_msg*);
 
         // Keep the same header (frame_id and timestamp)
-        output_msg.header = msg->header;
+        output_msg->header = msg->header;
         pub->publish(output_msg);
 
 }
