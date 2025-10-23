@@ -1,4 +1,4 @@
-# ====================
+## ====================
 # General Git ignores
 # ====================
 
@@ -20,18 +20,49 @@ desktop.ini
 *.tmp
 *.bak
 
+# ====================
 # Python
+# ====================
+
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Virtual environments (absolute protection)
 .env
 .venv/
 env/
 venv/
-pip-log.txt
+ENV/
+env.bak/
+venv.bak/
+*/.env/
+*/.venv/
+*/env/
+*/venv/
 
-# CMake
+# Python packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ====================
+# CMake / Build files
+# ====================
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
@@ -42,6 +73,10 @@ Makefile
 *.so
 *.a
 *.out
+
+# ====================
+# ROS / ROS2 Specific
+# ====================
 
 # Build and devel folders
 build/
@@ -90,7 +125,9 @@ test_results/
 .fastrtps_profile.xml
 fastrtps_logs/
 
+# ====================
 # Other
+# ====================
 *.orig
 *.rej
 *.old
