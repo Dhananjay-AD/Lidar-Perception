@@ -37,8 +37,8 @@
 
 - Clone the repository
 ```bash
-git clone https://github.com/yourusername/lidar-object-processing.git
-cd lidar-object-processing
+git clone https://github.com/dhananjaybhole4/Lidar-Perception.git
+cd Lidar-Perception
 ```
 - Install Python dependencies
 ```bash
